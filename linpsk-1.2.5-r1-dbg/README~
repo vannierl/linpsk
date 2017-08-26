@@ -1,0 +1,46 @@
+Important: This version uses qt5 !!!
+
+
+
+
+*****************************************************************************
+To build linpsk, untar the tar archiv and switch to the linpsk directory.
+*****************************************************************************
+
+run:
+mkdir -p build
+cd build
+qmake -o Makefile ../linpsk.pro
+make
+
+
+
+
+The executable linpsk is build in the build  directory.
+
+make install 
+
+will install the binary into usr/local/bin and the desktop file into /usr/share/pixmaps/ and the icon file into /usr/share/pixmaps/ .
+
+LinPSK uses the alsa sound system.
+You can use valid alsa devices like plughw:1 in the settings dialog
+Also using the card name is possible. In this case LinPSK searches the cardnumber and opens
+plughw:[cardnumber]
+
+If you prefer to use LinPSK_Record and LinPSK_Play as in previous versions edit the file asoundrc in the linpsk directory appropriately and append it to .asoundrc in your homedirectory.
+If no .asoundrc exists copy the edited asoundrc to .asoundrc in your homedirectory instead of appending.
+
+*****************************************************************************
+debug mode with gdb:
+*****************************************************************************
+
+cd to the build directory and clean it by
+            rm -rf *
+            Then run
+            qmake ../linpsk.pro 
+            make -f Makefile.debug
+            gdb linpsk
+gdb:
+enter r to run
+bt for backtrace.
+
